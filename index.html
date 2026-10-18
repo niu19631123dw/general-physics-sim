@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>普通物理 · 课本仿真（本科生）</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark">φ</div>
+      <div class="brand-text">
+        <div class="brand-title">普通物理 · 课本仿真</div>
+        <div class="brand-sub">37 个主题 · 五卷 · 帮助读懂课本</div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a class="nav-item nav-home" data-target="overview" href="#overview"><span class="nav-icon">▦</span>总览</a>
+      <div class="nav-group g-me"><span class="nav-dot"></span><span class="nav-group-name">第一卷 力学</span><span class="nav-count">12</span></div>
+      <div class="nav-sub">质点与刚体 · 振动与波</div>
+      <a class="nav-item g-me" data-target="projectile" href="#projectile"><span class="nav-icon">⌒</span>抛体运动</a>
+      <a class="nav-item g-me" data-target="shm" href="#shm"><span class="nav-icon">⌁</span>简谐振动</a>
+      <a class="nav-item g-me" data-target="resonance" href="#resonance"><span class="nav-icon">∿</span>阻尼与受迫共振</a>
+      <a class="nav-item g-me" data-target="wave" href="#wave"><span class="nav-icon">≋</span>机械波·行波与驻波</a>
+      <a class="nav-item g-me" data-target="doppler" href="#doppler"><span class="nav-icon">☀</span>多普勒效应</a>
+      <a class="nav-item g-me" data-target="collision" href="#collision"><span class="nav-icon">⊕</span>碰撞与动量守恒</a>
+      <a class="nav-item g-me" data-target="rigid" href="#rigid"><span class="nav-icon">⟳</span>角动量守恒·花滑收臂</a>
+      <a class="nav-item g-me" data-target="gyro" href="#gyro"><span class="nav-icon">◒</span>陀螺进动</a>
+      <a class="nav-item g-me" data-target="energy" href="#energy"><span class="nav-icon">⛰</span>功与能·机械能守恒</a>
+      <a class="nav-item g-me" data-target="rigidlaw" href="#rigidlaw"><span class="nav-icon">⚙</span>刚体定轴转动（转动定律）</a>
+      <a class="nav-item g-me" data-target="rolling" href="#rolling"><span class="nav-icon">◍</span>纯滚动（刚体平面运动）</a>
+      <a class="nav-item g-me" data-target="ppendulum" href="#ppendulum"><span class="nav-icon">⌖</span>复摆（物理摆）</a>
+      <div class="nav-group g-th"><span class="nav-dot"></span><span class="nav-group-name">第二卷 热学</span><span class="nav-count">5</span></div>
+      <div class="nav-sub">分子动理论 · 热力学</div>
+      <a class="nav-item g-th" data-target="idealgas" href="#idealgas"><span class="nav-icon">◌</span>理想气体（微观）</a>
+      <a class="nav-item g-th" data-target="firstlaw" href="#firstlaw"><span class="nav-icon">⊞</span>热力学第一定律</a>
+      <a class="nav-item g-th" data-target="carnot" href="#carnot"><span class="nav-icon">↻</span>卡诺循环与熵</a>
+      <a class="nav-item g-th" data-target="maxwell" href="#maxwell"><span class="nav-icon">≈</span>麦克斯韦速率分布</a>
+      <a class="nav-item g-th" data-target="equipartition" href="#equipartition"><span class="nav-icon">÷</span>能量均分定理</a>
+      <div class="nav-group g-em"><span class="nav-dot"></span><span class="nav-group-name">第三卷 电磁学</span><span class="nav-count">7</span></div>
+      <div class="nav-sub">电场 · 磁场 · 感应 · 电磁波</div>
+      <a class="nav-item g-em" data-target="efield" href="#efield"><span class="nav-icon">E</span>库仑定律与电场</a>
+      <a class="nav-item g-em" data-target="gauss" href="#gauss"><span class="nav-icon">∮</span>高斯定理</a>
+      <a class="nav-item g-em" data-target="potential" href="#potential"><span class="nav-icon">V</span>电势与电场梯度</a>
+      <a class="nav-item g-em" data-target="bfield" href="#bfield"><span class="nav-icon">B</span>毕奥-萨伐尔定律</a>
+      <a class="nav-item g-em" data-target="lorentz" href="#lorentz"><span class="nav-icon">⌒</span>洛伦兹力</a>
+      <a class="nav-item g-em" data-target="faraday" href="#faraday"><span class="nav-icon">∂</span>电磁感应</a>
+      <a class="nav-item g-em" data-target="emwave" href="#emwave"><span class="nav-icon">✷</span>电磁波</a>
+      <div class="nav-group g-op"><span class="nav-dot"></span><span class="nav-group-name">第四卷 光学</span><span class="nav-count">7</span></div>
+      <div class="nav-sub">几何光学 · 波动光学</div>
+      <a class="nav-item g-op" data-target="optics" href="#optics"><span class="nav-icon">◑</span>折射与全反射</a>
+      <a class="nav-item g-op" data-target="lens" href="#lens"><span class="nav-icon">⌕</span>薄透镜成像</a>
+      <a class="nav-item g-op" data-target="young" href="#young"><span class="nav-icon">⫶</span>杨氏双缝干涉</a>
+      <a class="nav-item g-op" data-target="film" href="#film"><span class="nav-icon">◎</span>薄膜干涉</a>
+      <a class="nav-item g-op" data-target="diffraction" href="#diffraction"><span class="nav-icon">▤</span>单缝衍射</a>
+      <a class="nav-item g-op" data-target="grating" href="#grating"><span class="nav-icon">▥</span>光栅衍射</a>
+      <a class="nav-item g-op" data-target="polarization" href="#polarization"><span class="nav-icon">⇅</span>光的偏振</a>
+      <div class="nav-group g-mod"><span class="nav-dot"></span><span class="nav-group-name">第五卷 近代物理</span><span class="nav-count">6</span></div>
+      <div class="nav-sub">量子与原子物理</div>
+      <a class="nav-item g-mod" data-target="blackbody" href="#blackbody"><span class="nav-icon">☀</span>黑体辐射</a>
+      <a class="nav-item g-mod" data-target="photoelectric" href="#photoelectric"><span class="nav-icon">ħ</span>光电效应</a>
+      <a class="nav-item g-mod" data-target="compton" href="#compton"><span class="nav-icon">γ</span>康普顿散射</a>
+      <a class="nav-item g-mod" data-target="bohr" href="#bohr"><span class="nav-icon">◉</span>玻尔氢原子</a>
+      <a class="nav-item g-mod" data-target="debroglie" href="#debroglie"><span class="nav-icon">λ</span>德布罗意物质波</a>
+      <a class="nav-item g-mod" data-target="well" href="#well"><span class="nav-icon">◧</span>一维无限深势阱</a>
+    </nav>
+    <div class="sidebar-foot">
+      <p>按本科生普通物理教材五卷章节组织，用交互仿真帮助理解课本概念与定律。</p>
+      <p>公式库 GP.* 由 <code>node verify.js</code> 核对（107 项全部通过）。</p>
+    </div>
+  </aside>
+
+  <main class="content">
+    <header class="content-head">
+      <h1>普通物理 · 课本仿真</h1>
+      <p class="subtitle">力学 · 热学 · 电磁学 · 光学 · 近代物理 —— 34 个主题，每个主题一张「概念 → 图 → 公式」，帮助读懂课本</p>
+      <div class="speedbar">演示速度 <input type="range" id="g-speed" min="0.1" max="2" step="0.05" value="1"><output id="g-speed-val">1.00×</output></div>
+    </header>
+
+    <section class="module overview active" id="overview">
+      <h2>总览 <span class="tag">37 个主题 · 107 项核对</span></h2>
+      <p class="desc">按普通物理教材五卷顺序排列：<b>力学 → 热学 → 电磁学 → 光学 → 近代物理</b>。
+        每个主题都对应课本上的一个核心概念或定律：<b>左图是动态的物理图景，右侧是实时物理量，底部是公式</b>。
+        拖动滑块改变参数，观察物理量如何随之变化 —— 这就是「把课本公式看活」。</p>
+      <div class="overview-grid">
+        <div class="ov-card g-me"><div class="ov-head"><span class="ov-mark">F</span><span class="ov-name">力学</span><span class="ov-count">12 个</span></div>
+          <p class="ov-desc">质点运动、振动与波、碰撞与动量、角动量与刚体。</p>
+          <div class="ov-items"><a class="ov-item" href="#projectile" data-goto="projectile"><b>1.1</b><span>抛体运动</span></a><a class="ov-item" href="#shm" data-goto="shm"><b>1.2</b><span>简谐振动</span></a><a class="ov-item" href="#resonance" data-goto="resonance"><b>1.3</b><span>阻尼共振</span></a><a class="ov-item" href="#wave" data-goto="wave"><b>1.4</b><span>机械波</span></a><a class="ov-item" href="#doppler" data-goto="doppler"><b>1.5</b><span>多普勒</span></a><a class="ov-item" href="#collision" data-goto="collision"><b>1.6</b><span>碰撞</span></a><a class="ov-item" href="#rigid" data-goto="rigid"><b>1.7</b><span>刚体转动</span></a><a class="ov-item" href="#gyro" data-goto="gyro"><b>1.8</b><span>陀螺进动</span></a><a class="ov-item" href="#energy" data-goto="energy"><b>1.9</b><span>功与能</span></a><a class="ov-item" href="#rigidlaw" data-goto="rigidlaw"><b>1.10</b><span>定轴转动</span></a><a class="ov-item" href="#rolling" data-goto="rolling"><b>1.11</b><span>纯滚动</span></a><a class="ov-item" href="#ppendulum" data-goto="ppendulum"><b>1.12</b><span>复摆</span></a></div>
+        </div>
+        <div class="ov-card g-th"><div class="ov-head"><span class="ov-mark">Q</span><span class="ov-name">热学</span><span class="ov-count">5 个</span></div>
+          <p class="ov-desc">分子动理论、热力学定律、统计分布。</p>
+          <div class="ov-items"><a class="ov-item" href="#idealgas" data-goto="idealgas"><b>2.1</b><span>理想气体</span></a><a class="ov-item" href="#firstlaw" data-goto="firstlaw"><b>2.2</b><span>第一定律</span></a><a class="ov-item" href="#carnot" data-goto="carnot"><b>2.3</b><span>卡诺循环</span></a><a class="ov-item" href="#maxwell" data-goto="maxwell"><b>2.4</b><span>麦克斯韦分布</span></a><a class="ov-item" href="#equipartition" data-goto="equipartition"><b>2.5</b><span>能量均分</span></a></div>
+        </div>
+        <div class="ov-card g-em"><div class="ov-head"><span class="ov-mark">E</span><span class="ov-name">电磁学</span><span class="ov-count">7 个</span></div>
+          <p class="ov-desc">静电场、稳恒磁场、电磁感应、电磁波。</p>
+          <div class="ov-items"><a class="ov-item" href="#efield" data-goto="efield"><b>3.1</b><span>电场</span></a><a class="ov-item" href="#gauss" data-goto="gauss"><b>3.2</b><span>高斯定理</span></a><a class="ov-item" href="#potential" data-goto="potential"><b>3.3</b><span>电势</span></a><a class="ov-item" href="#bfield" data-goto="bfield"><b>3.4</b><span>毕奥-萨伐尔</span></a><a class="ov-item" href="#lorentz" data-goto="lorentz"><b>3.5</b><span>洛伦兹力</span></a><a class="ov-item" href="#faraday" data-goto="faraday"><b>3.6</b><span>电磁感应</span></a><a class="ov-item" href="#emwave" data-goto="emwave"><b>3.7</b><span>电磁波</span></a></div>
+        </div>
+        <div class="ov-card g-op"><div class="ov-head"><span class="ov-mark">λ</span><span class="ov-name">光学</span><span class="ov-count">7 个</span></div>
+          <p class="ov-desc">几何光学、干涉、衍射、偏振。</p>
+          <div class="ov-items"><a class="ov-item" href="#optics" data-goto="optics"><b>4.1</b><span>折射全反射</span></a><a class="ov-item" href="#lens" data-goto="lens"><b>4.2</b><span>薄透镜成像</span></a><a class="ov-item" href="#young" data-goto="young"><b>4.3</b><span>双缝干涉</span></a><a class="ov-item" href="#film" data-goto="film"><b>4.4</b><span>薄膜干涉</span></a><a class="ov-item" href="#diffraction" data-goto="diffraction"><b>4.5</b><span>单缝衍射</span></a><a class="ov-item" href="#grating" data-goto="grating"><b>4.6</b><span>光栅衍射</span></a><a class="ov-item" href="#polarization" data-goto="polarization"><b>4.7</b><span>偏振</span></a></div>
+        </div>
+        <div class="ov-card g-mod"><div class="ov-head"><span class="ov-mark">ħ</span><span class="ov-name">近代物理</span><span class="ov-count">6 个</span></div>
+          <p class="ov-desc">量子化、光子、物质波、原子结构。</p>
+          <div class="ov-items"><a class="ov-item" href="#blackbody" data-goto="blackbody"><b>5.1</b><span>黑体辐射</span></a><a class="ov-item" href="#photoelectric" data-goto="photoelectric"><b>5.2</b><span>光电效应</span></a><a class="ov-item" href="#compton" data-goto="compton"><b>5.3</b><span>康普顿散射</span></a><a class="ov-item" href="#bohr" data-goto="bohr"><b>5.4</b><span>玻尔氢原子</span></a><a class="ov-item" href="#debroglie" data-goto="debroglie"><b>5.5</b><span>德布罗意波</span></a><a class="ov-item" href="#well" data-goto="well"><b>5.6</b><span>势阱</span></a></div>
+        </div>
+      </div>
+      <p class="ov-foot">共 37 个主题 · 物理公式核对 <b>107 项全部通过</b>（<code>node verify.js</code>）· 经典部分用国际单位制，近代物理用真实常数</p>
+    </section>
+
+    <!-- ============ 第一卷 力学 ============ -->
+    <section class="module" id="projectile">
+      <div class="crumb">力学 <span class="sep">›</span> 质点运动</div>
+      <h2>1.1 抛体运动 <span class="tag">Projectile Motion</span></h2>
+      <p class="desc">把抛体运动分解成<b>水平匀速</b>与<b>竖直匀加速</b>两个独立运动：x = v₀cosθ·t，y = v₀sinθ·t − ½gt²。
+        合成一条抛物线；加空气阻力后射程变短。拖动滑块看轨迹、射程、最大高度如何变化。</p>
+      <div class="controls">
+        <div class="control"><label>初速度 v₀ <output id="proj-v0-val">20 m/s</output></label><input type="range" id="proj-v0" min="5" max="50" step="1" value="20"></div>
+        <div class="control"><label>发射角 θ <output id="proj-angle-val">45°</output></label><input type="range" id="proj-angle" min="5" max="85" step="1" value="45"></div>
+        <div class="control"><label>空气阻力系数 <output id="proj-drag-val">0</output></label><input type="range" id="proj-drag" min="0" max="0.05" step="0.005" value="0"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="proj-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>射程 R</span><b id="proj-range">–</b></div>
+          <div class="stat"><span>最大高度 H</span><b id="proj-height">–</b></div>
+          <div class="stat"><span>飞行时间 T</span><b id="proj-time">–</b></div>
+          <p class="hint">45° 时射程最大；θ 与 (90°−θ) 的射程相同。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>射程 <span class="k">R = v₀²sin2θ/g</span>；最大高度 <span class="k">H = v₀²sin²θ/(2g)</span>；飞行时间 <span class="k">T = 2v₀sinθ/g</span></p></div>
+    </section>
+
+    <section class="module" id="shm">
+      <div class="crumb">力学 <span class="sep">›</span> 振动</div>
+      <h2>1.2 简谐振动 <span class="tag">Simple Harmonic Motion</span></h2>
+      <p class="desc">简谐振动是「匀速圆周运动在一条直径上的投影」。旋转矢量绕圆心匀速转动，
+        其末端在 x 轴上的投影按 <b>x = A cos(ωt+φ)</b> 来回运动 —— 振幅 A、角频率 ω、相位 φ 三个量完全确定振动。</p>
+      <div class="controls">
+        <div class="control"><label>振幅 A <output id="shm-A-val">1.0</output></label><input type="range" id="shm-A" min="0.2" max="2" step="0.1" value="1"></div>
+        <div class="control"><label>角频率 ω <output id="shm-w-val">2.0</output></label><input type="range" id="shm-w" min="0.5" max="5" step="0.1" value="2"></div>
+        <div class="control"><label>初相位 φ <output id="shm-phi-val">0°</output></label><input type="range" id="shm-phi" min="0" max="360" step="15" value="0"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="shm-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>位移 x</span><b id="shm-pos">–</b></div>
+          <div class="stat"><span>速度 v</span><b id="shm-vel">–</b></div>
+          <div class="stat"><span>周期 T = 2π/ω</span><b id="shm-period">–</b></div>
+          <div class="stat good"><span>机械能 E = ½kA²</span><b id="shm-energy">–</b></div>
+          <p class="hint">相位差 90° 时位移与速度相差四分之一周期；能量与振幅平方成正比。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>x = <span class="k">A cos(ωt+φ)</span>，v = <span class="k">−Aω sin(ωt+φ)</span>，T = <span class="k">2π/ω</span></p></div>
+    </section>
+
+    <section class="module" id="resonance">
+      <div class="crumb">力学 <span class="sep">›</span> 振动</div>
+      <h2>1.3 阻尼振动与受迫共振 <span class="tag">Damped &amp; Forced</span></h2>
+      <p class="desc">真实振动总有阻尼，振幅按 e<sup>−γt/2</sup> 衰减。若施加周期性外力，稳态振幅
+        A(ω) 在<b>共振频率</b>处达到极大，阻尼越小峰越高越尖锐。左图 A(ω) 曲线，右图阻尼振动的时域衰减。</p>
+      <div class="controls">
+        <div class="control"><label>阻尼系数 γ <output id="res-gamma-val">0.20</output></label><input type="range" id="res-gamma" min="0" max="2" step="0.05" value="0.2"></div>
+        <div class="control"><label>驱动频率 ω/ω₀ <output id="res-w-val">0.00</output></label><input type="range" id="res-w" min="0" max="2.5" step="0.01" value="0"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="res-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>受迫振幅 A(ω)</span><b id="res-A">–</b></div>
+          <div class="stat"><span>共振频率 ω_res</span><b id="res-wres">–</b></div>
+          <div class="stat good"><span>品质因数 Q</span><b id="res-Q">–</b></div>
+          <p class="hint">Q = ω₀/γ 越大共振峰越尖锐；γ ≥ 2ω₀ 时不再振荡（过阻尼）。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p><span class="k">A(ω) = (F₀/m)/√((ω₀²−ω²)² + γ²ω²)</span>，<span class="k">ω_res = √(ω₀²−γ²/2)</span>，<span class="k">Q = ω₀/γ</span></p></div>
+    </section>
+
+    <section class="module" id="wave">
+      <div class="crumb">力学 <span class="sep">›</span> 波动</div>
+      <h2>1.4 机械波：行波、驻波与拍 <span class="tag">Traveling / Standing Wave</span></h2>
+      <p class="desc">行波 y = A cos(kx−ωt) 沿 x 传播；两列反向行波叠加成<b>驻波</b>（节点不动、波腹振幅最大）；
+        两列频率接近的波叠加产生<b>拍</b>。切换模式观察。</p>
+      <div class="controls">
+        <div class="control"><label>模式</label><select id="wave-mode"><option value="travel" selected>行波</option><option value="standing">驻波</option><option value="beat">拍</option></select></div>
+        <div class="control"><label>谐波次数 n <output id="wave-n-val">2</output></label><input type="range" id="wave-n" min="1" max="6" step="1" value="2"></div>
+        <div class="control"><label>第二波频率 f₂ <output id="wave-f2-val">1.1</output></label><input type="range" id="wave-f2" min="0.8" max="1.5" step="0.05" value="1.1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="wave-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>波长 λ = 2L/n</span><b id="wave-lambda">–</b></div>
+          <div class="stat"><span>频率 f = nv/2L</span><b id="wave-f">–</b></div>
+          <div class="stat"><span>节点数</span><b id="wave-nodes">–</b></div>
+          <p class="hint">驻波节点等间距 L/n，是「边界条件导致量子化」的先声。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>驻波 <span class="k">λ_n = 2L/n</span>，<span class="k">f_n = nv/(2L)</span>；拍频 <span class="k">Δf = |f₁−f₂|</span></p></div>
+    </section>
+
+    <section class="module" id="doppler">
+      <div class="crumb">力学 <span class="sep">›</span> 波动</div>
+      <h2>1.5 多普勒效应 <span class="tag">Doppler Effect</span></h2>
+      <p class="desc">波源在介质中运动时，前方波前被压缩、后方被拉伸，观察者接收到的频率
+        f′ = f·v/(v−v_s)。救护车驶近时音调升高、驶离时降低，就是这个效应。</p>
+      <div class="controls">
+        <div class="control"><label>波源速度 v_s / v <output id="dop-vs-val">0.00</output></label><input type="range" id="dop-vs" min="-80" max="80" step="1" value="0"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="dop-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>观测频率 f′</span><b id="dop-f">–</b></div>
+          <div class="stat"><span>频率比 f′/f</span><b id="dop-ratio">–</b></div>
+          <p class="hint">波源速度越接近波速，前方波前越密集；v_s = v 时前方波前堆叠成冲击波。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>f′ = <span class="k">f·v/(v−v_s)</span>（源靠近）；f′ = f·v/(v+v_s)（源远离）</p></div>
+    </section>
+
+    <section class="module" id="collision">
+      <div class="crumb">力学 <span class="sep">›</span> 动量</div>
+      <h2>1.6 碰撞与动量守恒 <span class="tag">Momentum Conservation</span></h2>
+      <p class="desc">两物体碰撞时，若无外力，<b>总动量守恒</b>。弹性碰撞动能也守恒（等质量球弹性碰撞会交换速度），
+        完全非弹性碰撞后两球粘在一起。切换模式看碰撞后的速度。</p>
+      <div class="controls">
+        <div class="control"><label>质量 m₁ <output id="col-m1-val">1.0</output></label><input type="range" id="col-m1" min="0.5" max="5" step="0.1" value="1"></div>
+        <div class="control"><label>质量 m₂ <output id="col-m2-val">1.0</output></label><input type="range" id="col-m2" min="0.5" max="5" step="0.1" value="1"></div>
+        <div class="control"><label>初速 v₁ <output id="col-v1-val">2.0</output></label><input type="range" id="col-v1" min="0" max="4" step="0.1" value="2"></div>
+        <div class="control"><label>初速 v₂ <output id="col-v2-val">0.0</output></label><input type="range" id="col-v2" min="0" max="4" step="0.1" value="0"></div>
+        <div class="control"><label>碰撞类型</label><select id="col-mode"><option value="elastic" selected>弹性碰撞</option><option value="inelastic">完全非弹性</option></select></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="col-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>碰撞后 v₁′</span><b id="col-v1p">–</b></div>
+          <div class="stat"><span>碰撞后 v₂′</span><b id="col-v2p">–</b></div>
+          <div class="stat"><span>总动量 p</span><b id="col-p">–</b></div>
+          <div class="stat good"><span>总动能 KE</span><b id="col-ke">–</b></div>
+          <p class="hint">弹性碰撞动量、动能双守恒；完全非弹性碰撞动能损失最大。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>弹性 <span class="k">v₁′ = ((m₁−m₂)v₁+2m₂v₂)/(m₁+m₂)</span>；完全非弹性 <span class="k">v′ = (m₁v₁+m₂v₂)/(m₁+m₂)</span></p></div>
+    </section>
+
+    <!-- ============ 第二卷 热学 ============ -->
+    <section class="module" id="idealgas">
+      <div class="crumb">热学 <span class="sep">›</span> 分子动理论</div>
+      <h2>2.1 理想气体（微观模型） <span class="tag">Ideal Gas</span></h2>
+      <p class="desc">理想气体是一大群作无规则热运动、相互间几乎不碰撞的分子。温度越高分子平均动能越大、
+        撞击器壁越剧烈，压强越大：<b>p = (1/3)nmv̄² = nkT</b>。左图为分子运动的微观示意。</p>
+      <div class="controls">
+        <div class="control"><label>温度 T <output id="gas-T-val">300 K</output></label><input type="range" id="gas-T" min="100" max="1000" step="10" value="300"></div>
+        <div class="control"><label>分子数密度 n <output id="gas-n-val">2.0 ×10²⁵ m⁻³</output></label><input type="range" id="gas-n" min="0.5" max="5" step="0.1" value="2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="gas-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>压强 p = nkT</span><b id="gas-p">–</b></div>
+          <div class="stat"><span>方均根速率 v_rms</span><b id="gas-vrms">–</b></div>
+          <div class="stat"><span>平均平动动能</span><b id="gas-ke">–</b></div>
+          <p class="hint">温度是分子平均平动动能的量度：(3/2)kT。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>p = <span class="k">n k T</span>，v_rms = <span class="k">√(3kT/m)</span>，平均平动动能 <span class="k">(3/2)kT</span></p></div>
+    </section>
+
+    <section class="module" id="firstlaw">
+      <div class="crumb">热学 <span class="sep">›</span> 热力学</div>
+      <h2>2.2 热力学第一定律 <span class="tag">First Law</span></h2>
+      <p class="desc">第一定律 Q = ΔU + W：系统吸热一部分增加内能、一部分对外做功。
+        四个典型过程（等温、绝热、等压、等容）在 p–V 图上路径不同，曲线下面积就是功 W。</p>
+      <div class="controls">
+        <div class="control"><label>过程</label><select id="fl-mode"><option value="isothermal" selected>等温</option><option value="adiabatic">绝热</option><option value="isobaric">等压</option><option value="isochoric">等容</option></select></div>
+        <div class="control"><label>末态体积 V₂/V₁ <output id="fl-V2-val">2.0</output></label><input type="range" id="fl-V2" min="1" max="3" step="0.1" value="2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="fl-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>做功 W</span><b id="fl-W">–</b></div>
+          <div class="stat"><span>内能变化 ΔU</span><b id="fl-dU">–</b></div>
+          <div class="stat"><span>吸热 Q</span><b id="fl-Q">–</b></div>
+          <div class="stat good"><span>第一定律校验</span><b id="fl-check">–</b></div>
+          <p class="hint">绝热 Q=0 → ΔU=−W；等容 W=0 → Q=ΔU。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p><span class="k">Q = ΔU + W</span>；W = <span class="k">∫p dV</span>；ΔU = <span class="k">(f/2)nRΔT</span></p></div>
+    </section>
+
+    <section class="module" id="carnot">
+      <div class="crumb">热学 <span class="sep">›</span> 热力学</div>
+      <h2>2.3 卡诺循环与熵 <span class="tag">Carnot Cycle</span></h2>
+      <p class="desc">卡诺循环由两条等温线 + 两条绝热线组成，是两热源之间效率最高的循环：
+        η = 1 − T_c/T_h。效率只与两热源温度有关，与工作物质无关。</p>
+      <div class="controls">
+        <div class="control"><label>高温 T_h <output id="car-th-val">600 K</output></label><input type="range" id="car-th" min="320" max="900" step="10" value="600"></div>
+        <div class="control"><label>低温 T_c <output id="car-tc-val">300 K</output></label><input type="range" id="car-tc" min="100" max="500" step="10" value="300"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="car-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>卡诺效率 η</span><b id="car-eta">–</b></div>
+          <div class="stat"><span>净功 W</span><b id="car-W">–</b></div>
+          <div class="stat"><span>熵变 ΔS = Q_h/T_h</span><b id="car-dS">–</b></div>
+          <p class="hint">T_c 越低、T_h 越高效率越高，但 T_c 不能低于环境温度。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>η = <span class="k">1 − T_c/T_h</span>；Q_c/Q_h = <span class="k">T_c/T_h</span>；ΔS = <span class="k">Q/T</span></p></div>
+    </section>
+
+    <section class="module" id="maxwell">
+      <div class="crumb">热学 <span class="sep">›</span> 统计分布</div>
+      <h2>2.4 麦克斯韦速率分布 <span class="tag">Maxwell Distribution</span></h2>
+      <p class="desc">大量分子速率各不相同，但遵循确定的分布 f(v) = 4π(m/2πkT)^{3/2} v²e^{−mv²/2kT}。
+        三个特征速率：最概然 v_p &lt; 平均 v̄ &lt; 方均根 v_rms。温度升高，分布展宽、峰值右移。</p>
+      <div class="controls">
+        <div class="control"><label>温度 T <output id="max-T-val">300 K</output></label><input type="range" id="max-T" min="100" max="2000" step="50" value="300"></div>
+        <div class="control"><label>气体</label><select id="max-gas"><option value="h2">氢气 H₂</option><option value="n2" selected>氮气 N₂</option><option value="o2">氧气 O₂</option></select></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="max-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>最概然速率 v_p</span><b id="max-vp">–</b></div>
+          <div class="stat"><span>平均速率 v̄</span><b id="max-vavg">–</b></div>
+          <div class="stat"><span>方均根速率 v_rms</span><b id="max-vrms">–</b></div>
+          <p class="hint">分子越轻、温度越高，速率越大；三条速率标记在曲线上。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>f(v) = <span class="k">4π(m/2πkT)^{3/2} v² e^{−mv²/2kT}</span>；v_p=√(2kT/m)，v̄=√(8kT/πm)，v_rms=√(3kT/m)</p></div>
+    </section>
+
+    <section class="module" id="equipartition">
+      <div class="crumb">热学 <span class="sep">›</span> 统计分布</div>
+      <h2>2.5 能量均分定理 <span class="tag">Equipartition</span></h2>
+      <p class="desc">在温度 T 下，分子每个自由度平均分摊 (1/2)kT 的能量。单原子（3 个平动自由度）C_V=(3/2)R，
+        双原子（+2 转动）C_V=(5/2)R，比热容比 γ=(f+2)/f。左图为不同自由度的能量分配。</p>
+      <div class="controls">
+        <div class="control"><label>自由度 f <output id="eq-f-val">3</output></label><input type="range" id="eq-f" min="3" max="7" step="1" value="3"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="eq-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>定容热容 C_V</span><b id="eq-cv">–</b></div>
+          <div class="stat"><span>定压热容 C_p</span><b id="eq-cp">–</b></div>
+          <div class="stat"><span>比热容比 γ</span><b id="eq-gamma">–</b></div>
+          <div class="stat"><span>1 mol 内能 U</span><b id="eq-U">–</b></div>
+          <p class="hint">f=3 单原子 γ=5/3；f=5 双原子 γ=7/5。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>C_V = <span class="k">(f/2)R</span>，C_p = <span class="k">C_V+R</span>，γ = <span class="k">(f+2)/f</span>，U = <span class="k">(f/2)nRT</span></p></div>
+    </section>
+
+    <!-- ============ 第三卷 电磁学 ============ -->
+    <section class="module" id="efield">
+      <div class="crumb">电磁学 <span class="sep">›</span> 静电场</div>
+      <h2>3.1 库仑定律与电场 <span class="tag">Coulomb · E-field</span></h2>
+      <p class="desc">库仑定律 F = kq₁q₂/r² 描述电荷间的力；引入「电场」后，某点场强 E = F/q = kq/r²。
+        电场线从正电荷出发终止于负电荷，处处垂直于等势面。</p>
+      <div class="controls">
+        <div class="control"><label>电荷分布</label><select id="ef-mode"><option value="point" selected>单个点电荷</option><option value="dipole">电偶极子</option><option value="plate">平行板</option></select></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="ef-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>场强 E</span><b id="ef-E">–</b></div>
+          <div class="stat"><span>电势 V</span><b id="ef-V">–</b></div>
+          <p class="hint">场线越密场越强；沿场线方向电势降低。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>点电荷 <span class="k">E = kq/r²</span>，<span class="k">V = kq/r</span>；平行板 <span class="k">E = σ/ε₀</span></p></div>
+    </section>
+
+    <section class="module" id="gauss">
+      <div class="crumb">电磁学 <span class="sep">›</span> 静电场</div>
+      <h2>3.2 高斯定理 <span class="tag">Gauss's Law</span></h2>
+      <p class="desc">高斯定理 ∮E·dA = Q_enc/ε₀：闭合曲面的电通量只由内部电荷决定。
+        对点电荷、无限长线、无限大平面、均匀带电球，选合适的对称高斯面即可一步求出 E。</p>
+      <div class="controls">
+        <div class="control"><label>对称性</label><select id="gau-mode"><option value="point" selected>点电荷</option><option value="line">无限长线</option><option value="plane">无限大平面</option><option value="sphere">均匀带电球</option></select></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="gau-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>场强 E(r)</span><b id="gau-E">–</b></div>
+          <div class="stat"><span>电通量 Φ = Q/ε₀</span><b id="gau-flux">–</b></div>
+          <p class="hint">E ∝ 1/r²（球/点）、1/r（线）、常数（平面）—— 对称性决定 E 的衰减规律。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>∮E·dA = <span class="k">Q_enc/ε₀</span>；线 <span class="k">E=λ/2πε₀r</span>；面 <span class="k">E=σ/2ε₀</span></p></div>
+    </section>
+
+    <section class="module" id="potential">
+      <div class="crumb">电磁学 <span class="sep">›</span> 静电场</div>
+      <h2>3.3 电势与电场梯度 <span class="tag">Electric Potential</span></h2>
+      <p class="desc">电势 V 是标量，叠加比矢量方便得多。电场是电势的负梯度：E = −dV/dx。
+        左图画出点电荷的 V(r) 曲线与 E(r) 曲线，看两者如何对应（E 是 V 的斜率）。</p>
+      <div class="controls">
+        <div class="control"><label>电荷 q <output id="pot-q-val">1.0 nC</output></label><input type="range" id="pot-q" min="0.5" max="5" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="pot-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>r=1m 处 E</span><b id="pot-E">–</b></div>
+          <div class="stat"><span>r=1m 处 V</span><b id="pot-V">–</b></div>
+          <p class="hint">V ∝ 1/r，E ∝ 1/r²；E 随距离衰减更快。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>V = <span class="k">kq/r</span>，E = <span class="k">−dV/dr</span> = kq/r²</p></div>
+    </section>
+
+    <section class="module" id="bfield">
+      <div class="crumb">电磁学 <span class="sep">›</span> 稳恒磁场</div>
+      <h2>3.4 毕奥-萨伐尔定律 <span class="tag">Biot–Savart</span></h2>
+      <p class="desc">电流元产生的磁场 dB = (μ₀/4π)·Idl×r̂/r²。对长直导线积分得 B = μ₀I/2πr，
+        圆环中心 B = μ₀I/2R，螺线管内部 B = μ₀nI。磁场线是环绕电流的闭合曲线。</p>
+      <div class="controls">
+        <div class="control"><label>载流形状</label><select id="bf-mode"><option value="wire" selected>长直导线</option><option value="loop">圆环（中心）</option><option value="solenoid">螺线管</option></select></div>
+        <div class="control"><label>电流 I <output id="bf-I-val">2.0 A</output></label><input type="range" id="bf-I" min="0.5" max="10" step="0.5" value="2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="bf-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>磁感应强度 B</span><b id="bf-B">–</b></div>
+          <p class="hint">磁场方向用右手定则判断：拇指沿电流，四指沿磁感线。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>导线 <span class="k">B=μ₀I/2πr</span>；圆环 <span class="k">B=μ₀I/2R</span>；螺线管 <span class="k">B=μ₀nI</span></p></div>
+    </section>
+
+    <section class="module" id="lorentz">
+      <div class="crumb">电磁学 <span class="sep">›</span> 稳恒磁场</div>
+      <h2>3.5 洛伦兹力 <span class="tag">Lorentz Force</span></h2>
+      <p class="desc">磁场对运动电荷的力 F = qv×B 始终垂直于速度，不做功、不改变速率。
+        v⊥B 时走圆周（回旋半径 r = mv/qB，回旋频率与速度无关）；有平行分量时走螺旋线。</p>
+      <div class="controls">
+        <div class="control"><label>速率 v <output id="lor-v-val">2.0</output></label><input type="range" id="lor-v" min="0.5" max="5" step="0.1" value="2"></div>
+        <div class="control"><label>磁感应强度 B <output id="lor-B-val">1.0 T</output></label><input type="range" id="lor-B" min="0.2" max="3" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="lor-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>回旋半径 r</span><b id="lor-r">–</b></div>
+          <div class="stat"><span>回旋角频率 ω</span><b id="lor-w">–</b></div>
+          <div class="stat"><span>回旋周期 T</span><b id="lor-T">–</b></div>
+          <p class="hint">速度越快圆周越大，但绕一圈时间不变 —— 回旋加速器原理。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p><span class="k">r = mv/qB</span>，<span class="k">ω = qB/m</span>，<span class="k">T = 2πm/qB</span></p></div>
+    </section>
+
+    <section class="module" id="faraday">
+      <div class="crumb">电磁学 <span class="sep">›</span> 电磁感应</div>
+      <h2>3.6 电磁感应（法拉第与楞次定律） <span class="tag">Faraday · Lenz</span></h2>
+      <p class="desc">穿过回路的磁通量变化产生感应电动势 ε = −dΦ/dt。负号是<b>楞次定律</b>：
+        感应电流的方向总要反抗磁通量的变化（能量守恒的体现）。磁铁进出线圈时 ε 反向。</p>
+      <div class="controls">
+        <div class="control"><label>磁铁速度 <output id="far-v-val">1.0</output></label><input type="range" id="far-v" min="0.2" max="2" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="far-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>感应电动势 ε</span><b id="far-emf">–</b></div>
+          <div class="stat"><span>磁通量 Φ</span><b id="far-flux">–</b></div>
+          <div class="stat"><span>感应方向</span><b id="far-dir">–</b></div>
+          <p class="hint">Φ 最大处变化率为零（ε=0）；Φ 变化最快处 ε 最大。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>ε = <span class="k">−dΦ/dt</span>，Φ = <span class="k">B·A·cosθ</span></p></div>
+    </section>
+
+    <section class="module" id="emwave">
+      <div class="crumb">电磁学 <span class="sep">›</span> 麦克斯韦方程组</div>
+      <h2>3.7 电磁波 <span class="tag">Electromagnetic Wave</span></h2>
+      <p class="desc">变化的电场激发磁场、变化的磁场激发电场，两者相互激发形成在真空中以光速
+        c = 1/√(μ₀ε₀) 传播的横波。E 与 B 相互垂直、同相，且 E = cB。</p>
+      <div class="controls">
+        <div class="control"><label>频率 f <output id="em-f-val">5 ×10⁸ Hz</output></label><input type="range" id="em-f" min="1" max="10" step="0.5" value="5"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="em-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>波长 λ = c/f</span><b id="em-lambda">–</b></div>
+          <div class="stat"><span>电场幅值 E</span><b id="em-E">–</b></div>
+          <div class="stat"><span>磁场幅值 B</span><b id="em-B">–</b></div>
+          <p class="hint">电磁波是横波：E、B 都垂直于传播方向。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>c = <span class="k">1/√(μ₀ε₀)</span>，<span class="k">E = cB</span>，<span class="k">λ = c/f</span></p></div>
+    </section>
+
+    <!-- ============ 第四卷 光学 ============ -->
+    <section class="module" id="optics">
+      <div class="crumb">光学 <span class="sep">›</span> 几何光学</div>
+      <h2>4.1 折射与全反射 <span class="tag">Snell · Total Reflection</span></h2>
+      <p class="desc">光从一种介质进入另一种介质时发生折射，n₁sinθ₁ = n₂sinθ₂。
+        从光密到光疏、入射角超过临界角时发生<b>全反射</b>；入射角等于布儒斯特角时反射光完全偏振。</p>
+      <div class="controls">
+        <div class="control"><label>入射角 θ₁ <output id="opt-inc-val">45°</output></label><input type="range" id="opt-inc" min="0" max="85" step="1" value="45"></div>
+        <div class="control"><label>入射介质折射率 n₁ <output id="opt-n2-val">1.50</output></label><input type="range" id="opt-n2" min="1" max="2.5" step="0.05" value="1.5"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="opt-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>折射角 θ₂</span><b id="opt-r">–</b></div>
+          <div class="stat"><span>布儒斯特角 θ_B</span><b id="opt-b">–</b></div>
+          <div class="stat"><span>临界角 θ_c</span><b id="opt-c">–</b></div>
+          <p class="hint">光纤、潜水镜的全反射都靠这个临界角。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>n₁sinθ₁ = <span class="k">n₂sinθ₂</span>；tanθ_B = <span class="k">n₂/n₁</span>；sinθ_c = <span class="k">n₂/n₁</span>（n₁&gt;n₂）</p></div>
+    </section>
+
+    <section class="module" id="young">
+      <div class="crumb">光学 <span class="sep">›</span> 波动光学</div>
+      <h2>4.2 杨氏双缝干涉 <span class="tag">Young's Double Slit</span></h2>
+      <p class="desc">两束相干光叠加，光程差 d·sinθ = kλ 处相长（亮纹）、(k+½)λ 处相消（暗纹），
+        条纹等间距 Δy = λL/d。这是「光是波」的历史性实验证据。</p>
+      <div class="controls">
+        <div class="control"><label>缝距 d <output id="you-d-val">0.50 mm</output></label><input type="range" id="you-d" min="0.1" max="2" step="0.05" value="0.5"></div>
+        <div class="control"><label>波长 λ <output id="you-lambda-val">550 nm</output></label><input type="range" id="you-lambda" min="400" max="700" step="10" value="550"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="you-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>条纹间距 Δy</span><b id="you-spacing">–</b></div>
+          <div class="stat"><span>第一暗纹位置</span><b id="you-min">–</b></div>
+          <p class="hint">缝距越小、波长越长，条纹越宽。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>I ∝ <span class="k">cos²(πd sinθ/λ)</span>；亮纹 d sinθ = <span class="k">kλ</span>；Δy = <span class="k">λL/d</span></p></div>
+    </section>
+
+    <section class="module" id="film">
+      <div class="crumb">光学 <span class="sep">›</span> 波动光学</div>
+      <h2>4.3 薄膜干涉 <span class="tag">Thin Film</span></h2>
+      <p class="desc">光在薄膜上下表面反射后叠加干涉：光程差 2nd（+半波损失）决定明暗。
+        肥皂泡、油膜的彩色即源于此。等厚干涉的一个例子是牛顿环（同心圆环）。</p>
+      <div class="controls">
+        <div class="control"><label>膜厚 d <output id="fil-d-val">500 nm</output></label><input type="range" id="fil-d" min="100" max="1000" step="10" value="500"></div>
+        <div class="control"><label>波长 λ <output id="fil-lambda-val">550 nm</output></label><input type="range" id="fil-lambda" min="400" max="700" step="10" value="550"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="fil-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>光程差 2nd</span><b id="fil-delta">–</b></div>
+          <div class="stat"><span>干涉结果</span><b id="fil-state">–</b></div>
+          <p class="hint">改变膜厚，反射光颜色随之改变 —— 肥皂泡的色彩。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>光程差 <span class="k">Δ = 2nd cosθ</span>（+半波损失）；相长 Δ = kλ，相消 Δ = (k+½)λ</p></div>
+    </section>
+
+    <section class="module" id="diffraction">
+      <div class="crumb">光学 <span class="sep">›</span> 波动光学</div>
+      <h2>4.4 单缝衍射 <span class="tag">Single-slit Diffraction</span></h2>
+      <p class="desc">光绕过障碍物传播叫衍射。单缝衍射强度 I ∝ sinc²(πa sinθ/λ)，
+        第一暗纹在 sinθ = λ/a，中央亮纹最宽最亮。缝越窄衍射越显著。</p>
+      <div class="controls">
+        <div class="control"><label>缝宽 a <output id="dif-a-val">0.10 mm</output></label><input type="range" id="dif-a" min="0.02" max="0.5" step="0.01" value="0.1"></div>
+        <div class="control"><label>波长 λ <output id="dif-lambda-val">550 nm</output></label><input type="range" id="dif-lambda" min="400" max="700" step="10" value="550"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="dif-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>第一暗纹 sinθ = λ/a</span><b id="dif-min1">–</b></div>
+          <div class="stat"><span>中央亮纹半角宽</span><b id="dif-width">–</b></div>
+          <p class="hint">a → λ 时衍射最显著；a ≫ λ 时光近似直线传播（几何光学极限）。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>I ∝ <span class="k">sinc²(πa sinθ/λ)</span>；暗纹 a sinθ = <span class="k">kλ</span></p></div>
+    </section>
+
+    <section class="module" id="grating">
+      <div class="crumb">光学 <span class="sep">›</span> 波动光学</div>
+      <h2>4.5 光栅衍射 <span class="tag">Diffraction Grating</span></h2>
+      <p class="desc">大量等间距狭缝组成光栅，主极大满足 d·sinθ = kλ。缝越多主极大越窄越亮，
+        分辨本领 R = kN。光栅是光谱仪的核心元件。</p>
+      <div class="controls">
+        <div class="control"><label>光栅常数 d <output id="gra-d-val">1.0 µm</output></label><input type="range" id="gra-d" min="0.5" max="5" step="0.1" value="1"></div>
+        <div class="control"><label>波长 λ <output id="gra-lambda-val">550 nm</output></label><input type="range" id="gra-lambda" min="400" max="700" step="10" value="550"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="gra-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>一级衍射角 θ₁</span><b id="gra-k1">–</b></div>
+          <div class="stat"><span>最高级次 k_max</span><b id="gra-kmax">–</b></div>
+          <p class="hint">d 越小各级分得越开；白光入射时不同波长分到不同角度 → 色散。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>d sinθ = <span class="k">kλ</span>；分辨本领 <span class="k">R = kN</span></p></div>
+    </section>
+
+    <section class="module" id="polarization">
+      <div class="crumb">光学 <span class="sep">›</span> 偏振</div>
+      <h2>4.6 光的偏振 <span class="tag">Polarization · Malus</span></h2>
+      <p class="desc">光是横波，电场振动方向垂直传播方向。自然光通过偏振片变成线偏振光，
+        再经第二片偏振片时强度按<b>马吕斯定律</b> I = I₀cos²θ 变化，θ=90° 完全消光。</p>
+      <div class="controls">
+        <div class="control"><label>偏振片夹角 θ <output id="pol-theta-val">0°</output></label><input type="range" id="pol-theta" min="0" max="90" step="1" value="0"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="pol-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>透射强度 I/I₀</span><b id="pol-I">–</b></div>
+          <p class="hint">透射强度是电场振幅投影的平方 → cos²θ。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>I = <span class="k">I₀cos²θ</span>（马吕斯定律）</p></div>
+    </section>
+
+    <!-- ============ 第五卷 近代物理 ============ -->
+    <section class="module" id="blackbody">
+      <div class="crumb">近代物理 <span class="sep">›</span> 量子</div>
+      <h2>5.1 黑体辐射 <span class="tag">Blackbody Radiation</span></h2>
+      <p class="desc">黑体辐射的能量谱只由温度决定。经典理论在短波处发散（紫外灾难），
+        普朗克假设能量量子化 ε=hν 才得到正确公式。峰值波长 λ_max = b/T（维恩位移），总辐射 M = σT⁴。</p>
+      <div class="controls">
+        <div class="control"><label>温度 T <output id="bb-T-val">4000 K</output></label><input type="range" id="bb-T" min="2000" max="8000" step="100" value="4000"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="bb-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>峰值波长 λ_max</span><b id="bb-lambda">–</b></div>
+          <div class="stat"><span>总辐射 M = σT⁴</span><b id="bb-M">–</b></div>
+          <p class="hint">温度升高，峰值向短波移动（红热→白热→蓝热），总辐射按 T⁴ 剧增。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>M(λ,T) = <span class="k">2πhc²/λ⁵ · 1/(e^{hc/λkT}−1)</span>；λ_max = <span class="k">b/T</span>；M = <span class="k">σT⁴</span></p></div>
+    </section>
+
+    <section class="module" id="photoelectric">
+      <div class="crumb">近代物理 <span class="sep">›</span> 量子</div>
+      <h2>5.2 光电效应 <span class="tag">Photoelectric Effect</span></h2>
+      <p class="desc">光照射金属打出电子，其最大初动能与光强无关、只与频率线性相关：eU_s = hν − W₀。
+        存在截止频率 ν₀（红光无论如何强也打不出电子）。这只能用量子化的光（光子）解释。</p>
+      <div class="controls">
+        <div class="control"><label>逸出功 W₀ <output id="pho-W-val">4.3 eV</output></label><input type="range" id="pho-W" min="1.5" max="5" step="0.1" value="4.3"></div>
+        <div class="control"><label>入射光频率 ν <output id="pho-nu-val">1.20 ×10¹⁵ Hz</output></label><input type="range" id="pho-nu" min="0.6" max="1.5" step="0.01" value="1.2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="pho-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>截止电压 U_s</span><b id="pho-Us">–</b></div>
+          <div class="stat"><span>截止频率 ν₀</span><b id="pho-nu0">–</b></div>
+          <p class="hint">ν < ν₀ 时无论光多强都无光电子 —— 经典波动理论无法解释。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>eU_s = <span class="k">hν − W₀</span>；ν₀ = <span class="k">W₀/h</span></p></div>
+    </section>
+
+    <section class="module" id="compton">
+      <div class="crumb">近代物理 <span class="sep">›</span> 量子</div>
+      <h2>5.3 康普顿散射 <span class="tag">Compton Scattering</span></h2>
+      <p class="desc">X 射线被电子散射后波长变长，偏移量 Δλ = (h/mₑc)(1−cosθ) 只与散射角有关、
+        与入射波长无关 —— 证明光子具有动量，光确实粒子化了。</p>
+      <div class="controls">
+        <div class="control"><label>散射角 θ <output id="com-theta-val">90°</output></label><input type="range" id="com-theta" min="0" max="180" step="5" value="90"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="com-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>波长偏移 Δλ</span><b id="com-dlambda">–</b></div>
+          <div class="stat"><span>散射后波长 λ′</span><b id="com-lambda">–</b></div>
+          <p class="hint">θ=180°（背散射）偏移最大，为 2 倍康普顿波长 2h/mₑc。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>Δλ = <span class="k">(h/mₑc)(1−cosθ)</span>，λ_C = h/mₑc ≈ 2.43×10⁻¹² m</p></div>
+    </section>
+
+    <section class="module" id="bohr">
+      <div class="crumb">近代物理 <span class="sep">›</span> 原子</div>
+      <h2>5.4 玻尔氢原子 <span class="tag">Bohr Model</span></h2>
+      <p class="desc">玻尔假设电子角动量量子化 L = nħ，得到分立能级 E_n = −13.6/n² eV。
+        电子跃迁发射/吸收光子，谱线满足 1/λ = R_H(1/n₁² − 1/n₂²)。左图为能级与跃迁。</p>
+      <div class="controls">
+        <div class="control"><label>主量子数 n <output id="boh-n-val">2</output></label><input type="range" id="boh-n" min="1" max="6" step="1" value="2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="boh-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>能级 E_n</span><b id="boh-E">–</b></div>
+          <div class="stat"><span>轨道半径 r_n</span><b id="boh-r">–</b></div>
+          <div class="stat"><span>n→1 发射波长</span><b id="boh-lambda">–</b></div>
+          <p class="hint">能级随 n 增大越来越密，n→∞ 对应电离。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>E_n = <span class="k">−13.6/n² eV</span>，r_n = <span class="k">n²a₀</span>，1/λ = <span class="k">R_H(1/n₁²−1/n₂²)</span></p></div>
+    </section>
+
+    <section class="module" id="debroglie">
+      <div class="crumb">近代物理 <span class="sep">›</span> 量子</div>
+      <h2>5.5 德布罗意物质波 <span class="tag">de Broglie Wave</span></h2>
+      <p class="desc">德布罗意提出：实物粒子也有波动性，波长 λ = h/p = h/mv。
+        电子束经晶体衍射观察到衍射花样，证实了物质波。粒子越快、波长越短。</p>
+      <div class="controls">
+        <div class="control"><label>粒子速度 v <output id="db-v-val">1.0 ×10⁶ m/s</output></label><input type="range" id="db-v" min="0.1" max="10" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="db-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>德布罗意波长 λ</span><b id="db-lambda">–</b></div>
+          <div class="stat"><span>动量 p = h/λ</span><b id="db-p">–</b></div>
+          <p class="hint">宏观物体波长极短（≈10⁻³⁴ m），波动性无法察觉；微观粒子则不可忽略。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>λ = <span class="k">h/p</span> = h/(mv)</p></div>
+    </section>
+
+    <section class="module" id="well">
+      <div class="crumb">近代物理 <span class="sep">›</span> 量子</div>
+      <h2>5.6 一维无限深势阱 <span class="tag">Infinite Square Well</span></h2>
+      <p class="desc">粒子被束缚在无限深势阱中，波函数必须满足边界条件 ψ(0)=ψ(a)=0，
+        于是能量只能取分立值 E_n = n²π²ħ²/(2ma²) —— 边界条件导致量子化。
+        左图为能级与对应的波函数/概率密度。</p>
+      <div class="controls">
+        <div class="control"><label>量子数 n <output id="wel-n-val">2</output></label><input type="range" id="wel-n" min="1" max="6" step="1" value="2"></div>
+        <div class="control"><label>阱宽 a <output id="wel-a-val">1.0 nm</output></label><input type="range" id="wel-a" min="0.2" max="3" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="wel-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>能级 E_n</span><b id="wel-E">–</b></div>
+          <div class="stat"><span>波长 λ = 2a/n</span><b id="wel-lambda">–</b></div>
+          <p class="hint">n 越大节点越多、能量越高；E ∝ n²。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>E_n = <span class="k">n²π²ħ²/(2ma²)</span>，ψ_n = <span class="k">√(2/a) sin(nπx/a)</span></p></div>
+    </section>
+
+    <section class="module" id="rigid">
+      <div class="crumb">力学 <span class="sep">›</span> 刚体转动</div>
+      <h2>1.7 角动量守恒（花滑收臂） <span class="tag">Angular Momentum</span></h2>
+      <p class="desc">刚体绕定轴转动时，转动惯量 I = Σmᵢrᵢ² 反映质量分布。无外力矩时<b>角动量守恒</b> L = Iω：
+        把质量块向轴心收拢，I 减小、ω 增大、转动动能增大（花样滑冰收臂加速）。</p>
+      <div class="controls">
+        <div class="control"><label>质量块离轴距离 r <output id="rigid-r-val">1.00 R</output></label><input type="range" id="rigid-r" min="10" max="100" step="1" value="100"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="rigid-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>转动惯量 I = I₀+2mr²</span><b id="rigid-I">–</b></div>
+          <div class="stat"><span>角速度 ω = L/I</span><b id="rigid-w">–</b></div>
+          <div class="stat good"><span>角动量 L = Iω（守恒）</span><b id="rigid-L">–</b></div>
+          <div class="stat"><span>转动动能 Eₖ = ½Iω²</span><b id="rigid-ke">–</b></div>
+          <p class="hint">L 不变而 Eₖ 增大 —— 增加的动能来自收臂时克服离心力做的功。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>I = <span class="k">Σmᵢrᵢ²</span>；L = <span class="k">Iω</span>；Eₖ = <span class="k">½Iω²</span> = L²/2I</p></div>
+    </section>
+
+    <section class="module" id="gyro">
+      <div class="crumb">力学 <span class="sep">›</span> 刚体转动</div>
+      <h2>1.8 陀螺进动 <span class="tag">Gyroscope Precession</span></h2>
+      <p class="desc">高速自转的陀螺受重力矩 τ = mgR，角动量 L = Iω 的方向随时间改变，于是自转轴绕竖直轴缓慢<b>进动</b>：
+        Ω = τ/L = mgR/(Iω)。自转越快、进动越慢。</p>
+      <div class="controls">
+        <div class="control"><label>自转角速度 ω <output id="gyro-w-val">60 rad/s</output></label><input type="range" id="gyro-w" min="20" max="200" step="5" value="60"></div>
+        <div class="control"><label>质心到支点 R <output id="gyro-R-val">0.20 m</output></label><input type="range" id="gyro-R" min="0.05" max="0.4" step="0.01" value="0.2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="gyro-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>进动角速度 Ω</span><b id="gyro-omega">–</b></div>
+          <div class="stat"><span>重力矩 τ = mgR</span><b id="gyro-tau">–</b></div>
+          <div class="stat"><span>角动量 L = Iω</span><b id="gyro-L">–</b></div>
+          <p class="hint">进动方向由 τ = dL/dt 决定，右手定则判断。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>τ = <span class="k">dL/dt</span>；Ω = <span class="k">τ/L</span> = mgR/(Iω)</p></div>
+    </section>
+
+    <section class="module" id="energy">
+      <div class="crumb">力学 <span class="sep">›</span> 功与能</div>
+      <h2>1.9 功与能·机械能守恒 <span class="tag">Work-Energy</span></h2>
+      <p class="desc">在保守力场中，总机械能 E = ½mv² + U(x) 守恒。把 E 画成水平线、U(x) 画成势能曲线，
+        两者之间的差就是动能；粒子只能在 U ≤ E 的区域内往返（转折点 U = E）。</p>
+      <div class="controls">
+        <div class="control"><label>总能量 E <output id="energy-E-val">2.0 J</output></label><input type="range" id="energy-E" min="0.2" max="5" step="0.1" value="2"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="energy-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>当前动能 KE = E−U</span><b id="energy-ke">–</b></div>
+          <div class="stat"><span>左转折点 x₁</span><b id="energy-x1">–</b></div>
+          <div class="stat"><span>右转折点 x₂</span><b id="energy-x2">–</b></div>
+          <div class="stat good"><span>能量守恒校验</span><b id="energy-check">–</b></div>
+          <p class="hint">势能曲线越陡，恢复力越大；转折点处动能恰为零。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>E = <span class="k">½mv² + U(x)</span>；转折点 <span class="k">U(x) = E</span></p></div>
+    </section>
+
+    <section class="module" id="lens">
+      <div class="crumb">光学 <span class="sep">›</span> 几何光学</div>
+      <h2>4.2 薄透镜成像 <span class="tag">Thin Lens</span></h2>
+      <p class="desc">薄透镜成像满足 1/f = 1/u + 1/v，放大率 m = −v/u。物在焦点外成倒立实像，
+        物在焦点内成正立放大虚像（放大镜原理）。</p>
+      <div class="controls">
+        <div class="control"><label>物距 u <output id="lens-u-val">0.30 m</output></label><input type="range" id="lens-u" min="0.05" max="1" step="0.01" value="0.3"></div>
+        <div class="control"><label>焦距 f <output id="lens-f-val">0.15 m</output></label><input type="range" id="lens-f" min="0.05" max="0.5" step="0.01" value="0.15"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="lens-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>像距 v</span><b id="lens-v">–</b></div>
+          <div class="stat"><span>放大率 m = −v/u</span><b id="lens-mag">–</b></div>
+          <div class="stat good"><span>像的性质</span><b id="lens-type">–</b></div>
+          <p class="hint">u > f 实像倒立；u < f 虚像正立放大；u = f 平行光不成像。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>1/f = <span class="k">1/u + 1/v</span>；m = <span class="k">−v/u</span></p></div>
+    </section>
+
+    <section class="module" id="rigidlaw">
+      <div class="crumb">力学 <span class="sep">›</span> 刚体转动</div>
+      <h2>1.10 刚体定轴转动（转动定律） <span class="tag">Rigid Body · M=Iβ</span></h2>
+      <p class="desc">刚体绕定轴转动时，力矩 M 产生角加速度 β = M/I；转动惯量 I 由质量分布决定：
+        圆盘 ½mR²、圆环 mR²、球 (2/5)mR²、细杆（绕中心）mR²/3。恒定力矩下角速度线性增长 ω=βt，转动动能 Eₖ=½Iω²。</p>
+      <div class="controls">
+        <div class="control"><label>刚体</label><select id="rigidlaw-shape"><option value="disk" selected>圆盘</option><option value="ring">圆环</option><option value="sphere">球</option><option value="rod">细杆</option></select></div>
+        <div class="control"><label>质量 m <output id="rigidlaw-m-val">1.0 kg</output></label><input type="range" id="rigidlaw-m" min="0.5" max="5" step="0.1" value="1"></div>
+        <div class="control"><label>尺寸 R <output id="rigidlaw-R-val">0.30 m</output></label><input type="range" id="rigidlaw-R" min="0.1" max="1" step="0.05" value="0.3"></div>
+        <div class="control"><label>力矩 M <output id="rigidlaw-tau-val">1.0 N·m</output></label><input type="range" id="rigidlaw-tau" min="0.1" max="5" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="rigidlaw-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>转动惯量 I</span><b id="rigidlaw-I">–</b></div>
+          <div class="stat"><span>角加速度 β = M/I</span><b id="rigidlaw-beta">–</b></div>
+          <div class="stat"><span>角速度 ω = βt</span><b id="rigidlaw-w">–</b></div>
+          <div class="stat good"><span>转动动能 Eₖ = ½Iω²</span><b id="rigidlaw-ek">–</b></div>
+          <p class="hint">同一力矩下，I 越大 β 越小；圆环的 I 最大，最难加速。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>转动定律 <span class="k">M = Iβ</span>；转动惯量 <span class="k">I = ∫r²dm</span>；Eₖ = <span class="k">½Iω²</span></p></div>
+    </section>
+
+    <section class="module" id="rolling">
+      <div class="crumb">力学 <span class="sep">›</span> 刚体平面运动</div>
+      <h2>1.11 纯滚动（刚体平面运动） <span class="tag">Rolling</span></h2>
+      <p class="desc">刚体沿斜面纯滚动时，既平动又转动，约束 v=ωR。由机械能守恒可得 a = g·sinθ/(1+k)，
+        k=I/(mR²)：球 0.4、圆柱 0.5、圆环 1。k 越小滚得越快 —— 球最快、圆环最慢，与质量、半径无关。</p>
+      <div class="controls">
+        <div class="control"><label>刚体</label><select id="rolling-shape"><option value="sphere" selected>球</option><option value="cylinder">圆柱</option><option value="ring">圆环</option></select></div>
+        <div class="control"><label>斜面倾角 θ <output id="rolling-angle-val">30°</output></label><input type="range" id="rolling-angle" min="10" max="45" step="1" value="30"></div>
+        <div class="control"><label>下落高度 h <output id="rolling-h-val">1.0 m</output></label><input type="range" id="rolling-h" min="0.5" max="2" step="0.1" value="1"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="rolling-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>沿斜面加速度 a</span><b id="rolling-a">–</b></div>
+          <div class="stat"><span>到达底端速度 v</span><b id="rolling-v">–</b></div>
+          <div class="stat"><span>滚动时间 t</span><b id="rolling-t">–</b></div>
+          <p class="hint">纯滚动时静摩擦力不做功，机械能守恒：mgh = ½mv² + ½Iω²。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p><span class="k">a = g·sinθ/(1+k)</span>，<span class="k">v = √(2gh/(1+k))</span>，k = <span class="k">I/(mR²)</span></p></div>
+    </section>
+
+    <section class="module" id="ppendulum">
+      <div class="crumb">力学 <span class="sep">›</span> 刚体转动</div>
+      <h2>1.12 复摆（物理摆） <span class="tag">Physical Pendulum</span></h2>
+      <p class="desc">任意形状的刚体绕水平轴摆动即复摆，周期 T = 2π√(I/(mgd))，其中 d 为质心到转轴的距离。
+        细杆绕端点 I=mL²/3、d=L/2；圆盘绕边缘 I=3/2 mR²、d=R。</p>
+      <div class="controls">
+        <div class="control"><label>刚体</label><select id="ppend-shape"><option value="rodEnd" selected>细杆绕端点</option><option value="diskEdge">圆盘绕边缘</option></select></div>
+        <div class="control"><label>尺寸 L <output id="ppend-L-val">0.60 m</output></label><input type="range" id="ppend-L" min="0.2" max="2" step="0.01" value="0.6"></div>
+      </div>
+      <div class="stage"><div class="plot-wrap"><canvas id="ppend-canvas" class="plot"></canvas></div>
+        <div class="side"><h3>实时物理量</h3>
+          <div class="stat accent"><span>转动惯量 I</span><b id="ppend-I">–</b></div>
+          <div class="stat"><span>质心距 d</span><b id="ppend-d">–</b></div>
+          <div class="stat good"><span>摆动周期 T</span><b id="ppend-T">–</b></div>
+          <p class="hint">d 越小、I 越大，周期越长；这就是复摆测重力加速度与转动惯量的原理。</p></div>
+      </div>
+      <div class="formula"><h3>公式</h3><p>T = <span class="k">2π√(I/(mgd))</span>；细杆 I=mL²/3、d=L/2；圆盘 I=3/2 mR²、d=R</p></div>
+    </section>
+
+    <div class="foot">
+      按本科生普通物理教材五卷章节组织；公式库 GP.* 由 <code>node verify.js</code> 核对（94 项 PASS / 0 FAIL）。
+      经典部分国际单位制，近代物理用真实常数（h、e、c、ħ、R_H）。
+    </div>
+  </main>
+</div>
+
+<script src="js/plot.js"></script>
+<script src="js/sr-plot.js"></script>
+<script src="js/gp.js"></script>
+<script src="js/modules/projectile.js"></script>
+<script src="js/modules/shm.js"></script>
+<script src="js/modules/resonance.js"></script>
+<script src="js/modules/wave.js"></script>
+<script src="js/modules/doppler.js"></script>
+<script src="js/modules/collision.js"></script>
+<script src="js/modules/idealgas.js"></script>
+<script src="js/modules/firstlaw.js"></script>
+<script src="js/modules/carnot.js"></script>
+<script src="js/modules/maxwell.js"></script>
+<script src="js/modules/equipartition.js"></script>
+<script src="js/modules/efield.js"></script>
+<script src="js/modules/gauss.js"></script>
+<script src="js/modules/potential.js"></script>
+<script src="js/modules/bfield.js"></script>
+<script src="js/modules/lorentz.js"></script>
+<script src="js/modules/faraday.js"></script>
+<script src="js/modules/emwave.js"></script>
+<script src="js/modules/optics.js"></script>
+<script src="js/modules/young.js"></script>
+<script src="js/modules/film.js"></script>
+<script src="js/modules/diffraction.js"></script>
+<script src="js/modules/grating.js"></script>
+<script src="js/modules/polarization.js"></script>
+<script src="js/modules/blackbody.js"></script>
+<script src="js/modules/photoelectric.js"></script>
+<script src="js/modules/compton.js"></script>
+<script src="js/modules/bohr.js"></script>
+<script src="js/modules/debroglie.js"></script>
+<script src="js/modules/well.js"></script>
+<script src="js/modules/rigid.js"></script>
+<script src="js/modules/gyro.js"></script>
+<script src="js/modules/energy.js"></script>
+<script src="js/modules/lens.js"></script>
+<script src="js/modules/rigidlaw.js"></script>
+<script src="js/modules/rolling.js"></script>
+<script src="js/modules/ppendulum.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
