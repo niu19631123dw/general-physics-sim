@@ -17,17 +17,9 @@
 
 ## 快速开始
 
-### 方式一：直接打开
-双击 `index.html`（或 `standalone.html`）即可，无需安装任何东西。
+###直接打开
+ https://niu19631123dw.github.io/general-physics-sim/
 
-### 方式二：本地起服务
-```bash
-python -m http.server 8080
-# 浏览器打开 http://localhost:8080
-```
-
-### 方式三：GitHub Pages
-把仓库推到 GitHub，在 **Settings → Pages** 里选择分支 `main` / 根目录，即可在线访问。
 
 ## 目录结构
 
